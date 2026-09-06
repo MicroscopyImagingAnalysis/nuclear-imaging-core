@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nuclear-imaging-core"
+version = "0.1.0"
+description = "2D/3D nuclear microscopy segmentation, measurements and graph representations"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+  "matplotlib",
+  "networkx",
+  "numpy",
+  "opencv-python-headless",
+  "pandas",
+  "scipy",
+  "scikit-image",
+  "tifffile",
+]
+
+[project.optional-dependencies]
+stardist = ["csbdeep", "stardist"]
+rgb = [
+  "napari-simpleitk-image-processing",
+]
+test = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+nuclear_imaging_core = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
